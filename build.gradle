@@ -4,6 +4,7 @@ plugins {
 
 group = 'pl.filipRajmund'
 version = '1.0-SNAPSHOT'
+sourceCompatibility = '18'
 
 ext{
     logbackVersion = '1.4.11'
