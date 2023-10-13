@@ -1,20 +1,19 @@
 package pl.filipRajmund.service;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.core.io.Resource;
-import org.springframework.stereotype.Repository;
 import org.springframework.util.ResourceUtils;
 import pl.filipRajmund.domain.User;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
 @Slf4j
-@Repository
+//@Repository
 public class DataRepository {
 
     //metoda tworzy liste userow z dostarczongo pliku
@@ -22,11 +21,11 @@ public class DataRepository {
         try {
             return Files.readAllLines(ResourceUtils.getFile("classpath:users.csv").toPath()).stream()
                     .map(line -> mapUser(line))
-                    .filter(user-> user.isPresent())
-                    .map(user->user.get())
+                    .filter(user -> user.isPresent())
+                    .map(user -> user.get())
                     .toList();
 
-                    //.filter(user->user.isPresent())
+            //.filter(user->user.isPresent())
         } catch (IOException ex) {
             log.error("Error reading users.csv");
             return List.of();
@@ -50,6 +49,12 @@ public class DataRepository {
 
     //metoda zapisuje listę pliku
     public void saveTofile(final List<String> processed) {
+        try {
+            Files.write(Paths.get("build/result.txt"), processed);
+
+        } catch (IOException ex) {
+            log.error("Error saving data", ex);
+        }
 
     }
 }
