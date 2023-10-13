@@ -1,6 +1,7 @@
 package pl.filipRajmund.service;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Repository;
 import org.springframework.util.ResourceUtils;
 import pl.filipRajmund.domain.User;
 
@@ -13,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Slf4j
-//@Repository
+@Repository
 public class DataRepository {
 
     //metoda tworzy liste userow z dostarczongo pliku

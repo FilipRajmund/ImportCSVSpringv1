@@ -7,6 +7,7 @@ import pl.filipRajmund.domain.User;
 import java.util.List;
 
 @AllArgsConstructor
+@Component
 public class MainProcessor {
     private final DataRepository dataRepository;
     private final DataProcessingService dataProcessingService;
